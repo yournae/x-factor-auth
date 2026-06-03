@@ -1,4 +1,4 @@
-# X Actions 🐦
+# X Factor Auth 🔐
 
 X/Twitter automation toolkit — API-based + browser-based (CDP).
 
@@ -21,19 +21,16 @@ X/Twitter automation toolkit — API-based + browser-based (CDP).
 ## Setup
 
 ```bash
-# 1. Clone
-git clone <repo>
-cd x-actions
+# Clone
+git clone https://github.com/yournae/x-factor-auth.git
+cd x-factor-auth
 
-# 2. Install deps
+# Install
 pip install -r requirements.txt
 
-# 3. Configure
+# Configure
 cp .env.example .env
 # Edit .env with your X cookies
-
-# 4. Run
-python3 cli.py status
 ```
 
 ## Getting X Cookies
@@ -42,6 +39,29 @@ python3 cli.py status
 2. Login → F12 → Application → Cookies → x.com
 3. Copy `auth_token` and `ct0` values
 4. Paste into `.env`
+
+## Usage
+
+```python
+from x_actions import XActions
+
+client = XActions()
+
+# Like
+client.like("2056799898205368350")
+
+# Retweet
+client.retweet("2056799898205368350")
+
+# Follow (needs user ID, not handle)
+client.follow("2057327940183232512")
+
+# Post
+client.post("Hello from X Factor Auth! 🚀")
+
+# Full airdrop garapan
+client.garap_full("@ProjectX", "2056799898205368350")
+```
 
 ## API vs Browser
 
@@ -57,43 +77,20 @@ python3 cli.py status
 ## Files
 
 ```
-x_actions.py        # Main API automation module
-cli.py              # Command-line interface
+x_actions.py        # Main API automation
+cli.py              # CLI interface
 config/
-    settings.py     # Configuration (loads from .env)
+    settings.py     # Config loader (.env)
 utils/
-    helpers.py      # Retry, sanitization, helpers
+    helpers.py      # Retry, sanitization
 scripts/
-    inject.py       # CDP injection helper
-    login_x.py      # Cookie-based X login via CDP
-    nav.py          # Navigation helper
-    follow_user.js  # Follow user action
+    inject.py       # CDP injection
+    login_x.py      # Cookie-based login
+    nav.py          # Navigation
+    follow_user.js  # Follow action
     retweet_tweet.js # Retweet action
     like_tweet.js   # Like action
-    quote_tweet.js  # Quote tweet action
-```
-
-## Usage Examples
-
-```python
-from x_actions import XActions
-
-client = XActions()
-
-# Like a tweet
-client.like("2056799898205368350")
-
-# Retweet
-client.retweet("2056799898205368350")
-
-# Follow user (needs user ID, not handle)
-client.follow("2057327940183232512")
-
-# Post tweet
-client.post("Hello from X Actions! 🚀")
-
-# Full airdrop garapan
-client.garap_full("@ProjectX", "2056799898205368350")
+    quote_tweet.js  # Quote action
 ```
 
 ## Security
