@@ -1,0 +1,6 @@
+# Core dependencies
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# WebSocket (for CloakBrowser CDP)
+websocket-client>=1.6.0
